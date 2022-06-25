@@ -47,14 +47,8 @@ class DeviceLogsViewController: UIViewController, UITextFieldDelegate {
         user["phone"] = phoneNoTextField.text
         user["email"] = emailTextField.text
         print("user saved: \(user.description)")
-        user.saveInBackground(block: {(_ succeeded: Bool, _ error: Error?) -> Void in
-            if succeeded {
-                DVIAUtilities.showAlert(title: "Success", message: "User signed up successfully, look for the logs now", viewController: self)
-                os_log("Saved user info: %@",user.description)
-            } else {
-                DVIAUtilities.showAlert(title: "Oops", message: "Sign Up failed.", viewController: self)
-            }
-            self.signUpButton.setTitle("Sign Up", for: .normal)
-        })
+        DVIAUtilities.showAlert(title: "Success", message: "User signed up successfully, look for the logs now", viewController: self)
+        os_log("Saved user info: %@",user.description)
+        self.signUpButton.setTitle("Sign Up", for: .normal)
     }
 }
